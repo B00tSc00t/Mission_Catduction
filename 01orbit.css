@@ -16,3 +16,11 @@
     left: 20px;
     top: 20px;
 }
+
+#skipStory {
+    position: absolute;
+    right: 2rem;
+    top: 1rem;
+    border-radius: 45%;
+    background-color: fuchsia;
+}
