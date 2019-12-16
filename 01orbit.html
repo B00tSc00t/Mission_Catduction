@@ -9,39 +9,32 @@
 
 </head>
 
+<video autoplay muted loop id="startVideo">
+    <source src="Images/stars.mp4" type="video/mp4" />
+</video>
+
+ <img id="Ship" src="Images/Spaceship.png" width="50" height="50" class="spaceShip" />
+<div class="fade"></div>
+
 <body onload="startGame()">
 
-    <video autoplay muted loop id="startVideo">
-        <source src="Images/stars.mp4" type="video/mp4" />
-    </video>
+<button id="skipStory" type="button" onclick="skipStory()">Click to skip story</button>
 
-    <div id="Ship">
-        <img src="Images/Spaceship.png" width="50" height="50" class="spaceShip" />
+<section class="story">
+    
+    <div class="crawl">
+        <div class="title">
+            <p id="title1">Mission Catduction!</p>
+            <p>Bob finds himself wandering through the lonely corridors of an unfamiliar spaceship. After some exploration, he determines that it is a small cargo ship with nobody else onboard. The bridge has a large screen with some easy to use controls.  The first item on the display is a log entry that outlines his current mission:</p>
+            
+            <p>You have been hired by a xenobiologist to capture an alien cat-like creature and bring it back to Earth for study.  The planet in question is well known, having been surveyed by other humans before.  You just have to figure out how to get there, capture this creature, and deliver it to collect your reward.</p>
+
+        </div>
     </div>
 
-    <button id="skipStory" type="button" onclick="skipStory()">Click to skip story</button>
+</section>
 
-    <div class="fade"></div>
-
-    <section class="story">
-
-        <div class="crawl">
-
-            <div class="title">
-                <p>Mission Catduction!</p>
-            </div>
-
-            <p>Bob finds himself wandering through the lonely corridors of an unfamiliar spaceship.  After some exploration, he determines that it is a small cargo ship with nobody else onboard.  The bridge has a large screen with some easy to use controls.  The first item on the display is a log entry that outlines his current mission:</p>
-        
-        </div>
-
-    </section>
-    
-        <div>
-            <p>You have been hired by a xenobiologist to capture an alien cat-like creature and bring it back to Earth for study.  The planet in question is well known, having been surveyed by other humans before.  You just have to figure out how to get there, capture this creature, and deliver it to collect your reward.</p>
-        </div>
-
-    <script src="script.js"></script>
+<script src="script.js"></script>
 
 </body>
 </html>

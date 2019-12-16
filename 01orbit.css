@@ -1,89 +1,120 @@
-/* Fix the border so the user doesn't can't scroll */
 body {
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-}
-
-* {
-    box-sizing: border-box;
-}
-
-#startVideo {
-    position: fixed;
-    right: 0;
-    bottom: 0;
-    min-width: 100%;
-    min-height: 100%;
-  }
-
-#Ship {
-    position: absolute;
-    left: 20px;
-    top: 20px;
-}
-
-#skipStory {
-    position: absolute;
-    right: 2rem;
-    top: 55rem;
-    border-radius: 45%;
-    background-color: fuchsia;
-}
-
-/*#story {
-    position: absolute;
-    color: rgb(187, 182, 182);
-    margin: 0 30%;
-    font-size: x-large;
-}*/
-
-.story {
-    position: absolute;
-    display: flex;
-    justify-content: center;
-    height: 100%;
-    perspective: 400%;
-    color:rgb(187, 182, 182);
-    font-family: 'Pathway Gothic One', sans-serif;
-    font-size: 300%;
-    font-weight: 600;
-    letter-spacing: .5rem;
-    line-height: 150%;
-    text-align: justify;
-    margin: 40rem;
-}
-
-.crawl {
-    position: relative;
-    top: -100rem;
-    transform-origin: 50% 100%;
-}
-
-/* The animation */
-@keyframes crawl {
-    0% {
-        top: 0;
-        transform: rotateX(20deg) translateZ(0);
-    }
-    100% {
-        top: -600rem;
-        transform: rotateX(25deg) translateZ(2500rem);
-    }
-}
-
-.crawl {
-    position: relative;
-    transform-origin: 50% 100%;
-    animation: crawl 400s linear;
-}
-
-/*Fading Text*/
-.fade {
-    position: relative;
-    width: 100%;
-    min-height: 60vh;
-    top: -25rem;
-    background-image: linear-gradient(0deg, transparent, black 75%);
-    z-index: 1;
-}
+    /* Force the body to fill the entire screen */
+   width: 100%;
+   height: 100%;
+   /* Hide elements that flow outside the viewable space */
+   overflow: hidden;
+   /* Black background for the screen */
+   background: #000;  
+ }
+ 
+ #Ship {
+     position: absolute;
+     left: 20px;
+     top: 20px;
+ }
+ 
+ #skipStory {
+     position: absolute;
+     right: 0;
+     bottom: 0;
+     font-size: 0.875em;
+     width: 10%;
+     border-radius: 45%;
+     background-color: fuchsia;
+ }
+ 
+ #startVideo {
+    /* Force the body to fill the entire screen */
+   width: 100%;
+   height: 100%;
+   /* Hide elements that flow outside the viewable space */
+   overflow: hidden; 
+   position: absolute;
+ }
+ 
+ @media (min-aspect-ratio: 16/9) {
+     #startVideo {
+         width:100%;
+         height: auto;
+     }
+ }
+ 
+ @media (max-aspect-ratio: 16/9) {
+     #startVideo { 
+         width:auto;
+         height: 100%;
+     }
+ }
+ 
+ #title1 {
+     /* Flexbox to center the entire element on the screen */
+   display: flex;
+   justify-content: center;
+   /* This is a magic number based on the context in which this snippet is used and effects the perspective */
+   height: 800px;
+   /* This sets allows us to transform the text on a 3D plane, and is somewhat a magic number */
+   perspective: 400px;
+   /* The rest is totally up to personal styling preferences */
+   color: greenyellow;
+   font-family: 'Pathway Gothic One', sans-serif;
+   font-size: 200%;
+   font-weight: 400;
+   letter-spacing: 1rem;
+   line-height: 200%;
+   text-align: justify;
+   z-index: -1;
+ }
+ 
+ .story {
+   /* Flexbox to center the entire element on the screen */
+   display: flex;
+   justify-content: center;
+   /* This is a magic number based on the context in which this snippet is used and effects the perspective */
+   height: 1300px;
+   /* This sets allows us to transform the text on a 3D plane, and is somewhat a magic number */
+   perspective: 200px;
+   /* The rest is totally up to personal styling preferences */
+   color: #feda4a;
+   font-family: 'Pathway Gothic One', sans-serif;
+   font-size: 700%;
+   font-weight: 600;
+   letter-spacing: 6px;
+   line-height: 150%;
+   text-align: justify;
+   z-index: -1;
+ }
+ 
+ .crawl {
+   /* Position the element so we can adjust the top property in the animation */
+   position: relative;
+   /* Making sure the text is fully off the screen at the start and end of the animation */
+   top: -1100rem;
+   /* Defines the skew origin at the very center when we apply transforms on the animation */
+   transform-origin: 60% 100%;
+ }
+ 
+ /* We're calling this animation "crawl" */
+ @keyframes crawl {
+   0% {
+     /* The element starts below the screen */
+     top: 0;
+     /* Rotate the text 20 degrees but keep it close to the viewer */
+     transform: rotateX(20deg) translateZ(0);
+   }
+   100% { 
+     /* This is a magic number, but using a big one to make sure the text is fully off the screen at the end */
+     top: -6000px;
+     /* Slightly increasing the rotation at the end and moving the text far away from the viewer */
+     transform: rotateX(25deg) translateZ(-2500px);
+   }
+ }
+ 
+ .crawl {
+   /* Position the element so we can adjust the top property in the animation */
+   position: relative;
+   /* Defines the skew origin at the very center when we apply transforms on the animation */
+   transform-origin: 50% 100%;
+   /* Adds the crawl animation, which plays for time */
+   animation: crawl 30s linear;
+ }
