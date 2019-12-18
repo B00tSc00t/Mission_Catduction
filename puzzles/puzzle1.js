@@ -4,6 +4,8 @@ var container = document.createElement('div');  // create a div and reference it
 container.className = 'console';  // add class="console" to that div
 document.querySelector('body').append(container);  // add our div to the html body at the end
 
+var reactorIsOK = false;  // initial state, as a top-level variable
+
 // call the makeConsole function (loaded onto window by js-console.js previously in the html),
 // and pass the function our div, some paramaters, and keep reference to it with the controller variable:
 var controller = window.makeConsole(container, {
@@ -65,14 +67,19 @@ function processInput(cmdLine) {
             return '';  // no parameters?  just return an empty line
         }
         case './reset-reactor': {
+            reactorIsOK = true;
             return [{msg: 'Reactor has been reset, ship\'s propulsion returning to normal!', className: 'js-console-message-value'}];
         }
         case 'hint': {
             return [{msg: 'Do a web search for how to execute Unix commands in the current directory.', className: 'js-console-message-value'}];
         }
         case 'exit': {
-            // *** handle exit code here, go on to next scene
-            return [{msg: 'EXITING...', className: 'js-console-message-value' }];
+            // *** handle exit code here, go on to next scene or stay in previous one
+            if(reactorIsOK) {
+                return [{msg: 'EXITING, (reactor in GOOD state)...', className: 'js-console-message-value' }];
+            } else {
+                return [{msg: 'EXITING, (reactor still in bad state)...', className: 'js-console-message-value' }];
+            }
         }
 
         default: {
